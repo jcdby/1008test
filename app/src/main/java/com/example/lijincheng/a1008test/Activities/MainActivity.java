@@ -6,9 +6,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.TextView;
 
 import com.example.lijincheng.a1008test.Adapters.AlbumAdapter;
 import com.example.lijincheng.a1008test.AsyncTasks.ApiCallAsyncTask;
@@ -20,6 +18,7 @@ import com.example.lijincheng.a1008test.R;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
 
 import java.util.ArrayList;
 
@@ -39,8 +38,8 @@ public class MainActivity extends AppCompatActivity implements APICallFinishedLi
         albumAdapter = new AlbumAdapter(this,albums);
 
 
-        String albumAdrs = "http://jsonplaceholder.typicode.com/albums";
-        String photosAdrs = "http://jsonplaceholder.typicode.com/photos";
+        String albumAdrs = "https://jsonplaceholder.typicode.com/albums";
+        String photosAdrs = "https://jsonplaceholder.typicode.com/photos";
 
         ApiCallAsyncTask task1 = new ApiCallAsyncTask();
         task1.addFinishTaskListener(this, "album");
@@ -51,12 +50,14 @@ public class MainActivity extends AppCompatActivity implements APICallFinishedLi
         task2.execute(photosAdrs);
 
 
-        Intent intent = new Intent(".Activities.DetailsActivity");
+
 
         AlbumView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-
+                Intent intent = new Intent(MainActivity.this,DetailsActivity.class);
+                intent.putExtra("photos",i);
+                getApplicationContext().startActivity(intent);
             }
         });
 
@@ -137,6 +138,8 @@ public class MainActivity extends AppCompatActivity implements APICallFinishedLi
 
         }
     }
+
+
 
 
 }

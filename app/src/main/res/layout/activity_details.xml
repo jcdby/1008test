@@ -10,4 +10,14 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.example.lijincheng.a1008test.Activities.DetailsActivity">
 
+    <GridView
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentTop="true"
+        android:numColumns="auto_fit"
+        android:gravity="center"
+        android:columnWidth="100dp"
+        android:stretchMode="columnWidth"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:id="@+id/photos_grid" />
 </RelativeLayout>

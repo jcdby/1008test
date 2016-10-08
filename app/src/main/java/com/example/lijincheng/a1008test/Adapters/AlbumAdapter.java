@@ -3,14 +3,12 @@ package com.example.lijincheng.a1008test.Adapters;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.graphics.drawable.Drawable;
 import android.os.AsyncTask;
 import android.support.annotation.NonNull;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.webkit.DownloadListener;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -58,13 +56,15 @@ public class AlbumAdapter extends ArrayAdapter<Album> implements DownLoadFinishe
 
         title.setText(album.getTitle());
 
-        URL url1 = album.getPreview().get(0);
-        URL url2 = album.getPreview().get(1);
-        URL url3 = album.getPreview().get(2);
 
-        DownloadBitTask downloadBitTask = new DownloadBitTask();
-        downloadBitTask.addListener(this);
-        downloadBitTask.execute(url1,url2, url3);
+        //do it later.
+//        URL url1 = album.getPreview().get(0);
+//        URL url2 = album.getPreview().get(1);
+//        URL url3 = album.getPreview().get(2);
+//
+//        DownloadBitTask downloadBitTask = new DownloadBitTask();
+//        downloadBitTask.addListener(this);
+//        downloadBitTask.execute(url1,url2, url3);
 
 
 

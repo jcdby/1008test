@@ -1,7 +1,6 @@
 package com.example.lijincheng.a1008test.AsyncTasks;
 
 import android.os.AsyncTask;
-import android.util.Log;
 
 import com.example.lijincheng.a1008test.Listeners.APICallFinishedListener;
 
@@ -24,18 +23,11 @@ public class ApiCallAsyncTask extends AsyncTask<String, Void, String> {
 
     @Override
     protected String doInBackground(String... urls) {
-        // The connection URL
         String url = urls[0];
 
-        // Create a new RestTemplate instance
         RestTemplate restTemplate = new RestTemplate();
-
-        // Add the String message converter
         restTemplate.getMessageConverters().add(new StringHttpMessageConverter());
-
-        // Make the HTTP GET request, marshaling the response to a String
         String result = restTemplate.getForObject(url, String.class);
-        Log.i("GotDATA", result);
         return result;
     }
 

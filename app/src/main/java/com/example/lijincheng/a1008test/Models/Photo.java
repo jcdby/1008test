@@ -20,6 +20,8 @@ public class Photo {
         this.albumId = 0;
     }
 
+
+
     public Integer getId() {
         return id;
     }
@@ -59,4 +61,6 @@ public class Photo {
     public void setAlbumId(Integer albumId) {
         this.albumId = albumId;
     }
+
+
 }

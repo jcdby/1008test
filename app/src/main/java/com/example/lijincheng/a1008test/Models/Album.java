@@ -1,5 +1,7 @@
 package com.example.lijincheng.a1008test.Models;
 
+import android.os.Parcel;
+import android.os.Parcelable;
 import android.util.Log;
 
 import java.net.MalformedURLException;
@@ -10,7 +12,7 @@ import java.util.ArrayList;
  * Created by lijincheng on 10/8/16.
  */
 
-public class Album {
+public class Album{
 
     Integer id;
     String title;
@@ -78,4 +80,7 @@ public class Album {
     public void addPhoto(Photo photo){
         photos.add(photo);
     }
+
+
+
 }
