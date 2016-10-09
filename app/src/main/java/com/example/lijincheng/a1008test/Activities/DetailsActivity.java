@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.ArrayAdapter;
 import android.widget.GridView;
-import android.widget.TextView;
 
 import com.example.lijincheng.a1008test.Adapters.PhotosAdapter;
 import com.example.lijincheng.a1008test.AsyncTasks.ApiCallAsyncTask;

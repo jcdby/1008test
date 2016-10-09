@@ -95,10 +95,6 @@ public class MainActivity extends AppCompatActivity implements APICallFinishedLi
                 album.setTitle(objAlbum.getString("title"));
                 albums.add(album);
             }
-
-
-
-
         } catch (JSONException e){
             Log.e("Json Exception", e.toString());
         }

@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import com.example.lijincheng.a1008test.Models.Photo;
 import com.example.lijincheng.a1008test.R;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -38,7 +39,12 @@ public class PhotosAdapter extends ArrayAdapter<Photo> {
         }
 
         title = (TextView) convertView.findViewById(R.id.photo_title);
+        photoImage = (ImageView) convertView.findViewById(R.id.photo_img);
         title.setText(photo.getTitle().substring(0,8) + "...");
+
+
+
+        Picasso.with(getContext()).load(photo.getUrl().replace("http", "https")).resize(150,150).into(photoImage);
 
         return convertView;
 
