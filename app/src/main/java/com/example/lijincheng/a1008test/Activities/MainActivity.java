@@ -14,6 +14,7 @@ import com.example.lijincheng.a1008test.Listeners.APICallFinishedListener;
 import com.example.lijincheng.a1008test.Models.Album;
 import com.example.lijincheng.a1008test.Models.Photo;
 import com.example.lijincheng.a1008test.R;
+import com.example.lijincheng.a1008test.Utils.Utils;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -38,8 +39,8 @@ public class MainActivity extends AppCompatActivity implements APICallFinishedLi
         albumAdapter = new AlbumAdapter(this,albums);
 
 
-        String albumAdrs = "https://jsonplaceholder.typicode.com/albums";
-        String photosAdrs = "https://jsonplaceholder.typicode.com/photos";
+        String albumAdrs = Utils.getProperity("AlbumAPIAdr",getApplicationContext());
+        String photosAdrs = Utils.getProperity("PhotoAPIAdr",getApplicationContext());
 
         ApiCallAsyncTask task1 = new ApiCallAsyncTask();
         task1.addFinishTaskListener(this, "album");

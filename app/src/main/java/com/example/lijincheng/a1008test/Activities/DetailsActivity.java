@@ -13,6 +13,7 @@ import com.example.lijincheng.a1008test.AsyncTasks.ApiCallAsyncTask;
 import com.example.lijincheng.a1008test.Listeners.APICallFinishedListener;
 import com.example.lijincheng.a1008test.Models.Photo;
 import com.example.lijincheng.a1008test.R;
+import com.example.lijincheng.a1008test.Utils.Utils;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -37,7 +38,7 @@ public class DetailsActivity extends AppCompatActivity implements APICallFinishe
         photoArrayAdapter = new PhotosAdapter(this,
                  photos);
 
-        String photosAdrs = "http://jsonplaceholder.typicode.com/photos";
+        String photosAdrs = Utils.getProperity("PhotoAPIAdr",getApplicationContext());
 
         ApiCallAsyncTask getPhotosTask = new ApiCallAsyncTask();
         getPhotosTask.addFinishTaskListener(this, "getPhotos");
