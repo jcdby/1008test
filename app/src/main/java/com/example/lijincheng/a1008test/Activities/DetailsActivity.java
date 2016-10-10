@@ -62,7 +62,7 @@ public class DetailsActivity extends AppCompatActivity implements APICallFinishe
                 }
             }
         } catch (JSONException e){
-            Log.e("Json Exception", e.toString());
+            e.printStackTrace();
         }
 
 

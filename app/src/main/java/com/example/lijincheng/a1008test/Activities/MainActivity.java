@@ -94,7 +94,7 @@ public class MainActivity extends AppCompatActivity implements APICallFinishedLi
                 albums.add(album);
             }
         } catch (JSONException e){
-            Log.e("Json Exception", e.toString());
+            e.printStackTrace();
         }
 
     }
@@ -112,7 +112,7 @@ public class MainActivity extends AppCompatActivity implements APICallFinishedLi
             this.AlbumView.setAdapter(albumAdapter);
 
         } catch (JSONException e){
-            Log.e("Json Exception", e.toString());
+            e.printStackTrace();
         }
     }
 

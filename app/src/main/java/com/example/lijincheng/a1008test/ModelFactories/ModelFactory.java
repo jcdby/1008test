@@ -36,7 +36,7 @@ public class ModelFactory {
             photo.setUrl(jsObj.getString("url"));
             photo.setAlbumId(jsObj.getInt("albumId"));
         }catch (JSONException e){
-            Log.e("Json Error", e.toString());
+            e.printStackTrace();
         }
 
         return photo;
@@ -50,7 +50,7 @@ public class ModelFactory {
             album.setId(JsObj.getInt("id"));
             album.setTitle(JsObj.getString("title"));
         } catch (JSONException e){
-            Log.e("Json Error", e.toString());
+            e.printStackTrace();
         }
 
         return album;
