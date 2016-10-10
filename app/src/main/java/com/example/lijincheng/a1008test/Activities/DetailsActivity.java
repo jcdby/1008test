@@ -10,6 +10,7 @@ import android.widget.GridView;
 import com.example.lijincheng.a1008test.Adapters.PhotosAdapter;
 import com.example.lijincheng.a1008test.AsyncTasks.ApiCallAsyncTask;
 import com.example.lijincheng.a1008test.Listeners.APICallFinishedListener;
+import com.example.lijincheng.a1008test.ModelFactories.ModelFactory;
 import com.example.lijincheng.a1008test.Models.Photo;
 import com.example.lijincheng.a1008test.R;
 import com.example.lijincheng.a1008test.Utils.Utils;
@@ -56,12 +57,7 @@ public class DetailsActivity extends AppCompatActivity implements APICallFinishe
             for(int i = 0; i < jsonPhotos.length(); i++){
                 JSONObject objPhoto = jsonPhotos.getJSONObject(i);
                 if(objPhoto.getInt("albumId") == albumId){
-                    Photo photo = new Photo();
-                    photo.setId(objPhoto.getInt("id"));
-                    photo.setTitle(objPhoto.getString("title"));
-                    photo.setThumnailUrl(objPhoto.getString("thumbnailUrl"));
-                    photo.setUrl(objPhoto.getString("url"));
-                    photo.setAlbumId(objPhoto.getInt("albumId"));
+                    Photo photo = ModelFactory.getInstance().generatePhoto(objPhoto);
                     photos.add(photo);
                 }
             }

@@ -11,6 +11,7 @@ import android.widget.ListView;
 import com.example.lijincheng.a1008test.Adapters.AlbumAdapter;
 import com.example.lijincheng.a1008test.AsyncTasks.ApiCallAsyncTask;
 import com.example.lijincheng.a1008test.Listeners.APICallFinishedListener;
+import com.example.lijincheng.a1008test.ModelFactories.ModelFactory;
 import com.example.lijincheng.a1008test.Models.Album;
 import com.example.lijincheng.a1008test.Models.Photo;
 import com.example.lijincheng.a1008test.R;
@@ -42,13 +43,13 @@ public class MainActivity extends AppCompatActivity implements APICallFinishedLi
         String albumAdrs = Utils.getProperity("AlbumAPIAdr",getApplicationContext());
         String photosAdrs = Utils.getProperity("PhotoAPIAdr",getApplicationContext());
 
-        ApiCallAsyncTask task1 = new ApiCallAsyncTask();
-        task1.addFinishTaskListener(this, "album");
-        task1.execute(albumAdrs);
+        ApiCallAsyncTask getAlbumTask = new ApiCallAsyncTask();
+        getAlbumTask.addFinishTaskListener(this, "album");
+        getAlbumTask.execute(albumAdrs);
 
-        ApiCallAsyncTask task2 = new ApiCallAsyncTask();
-        task2.addFinishTaskListener(this,"photo");
-        task2.execute(photosAdrs);
+        ApiCallAsyncTask getPhotoTask = new ApiCallAsyncTask();
+        getPhotoTask.addFinishTaskListener(this,"photo");
+        getPhotoTask.execute(photosAdrs);
 
 
 
@@ -68,7 +69,6 @@ public class MainActivity extends AppCompatActivity implements APICallFinishedLi
 
     @Override
     public void onFinishedTask(String taskName, String result) {
-//        Log.i("Event", taskName+ "\n " + result);
         switch (taskName){
             case "album":
                 generateAlbums(result, this.albums);
@@ -89,10 +89,8 @@ public class MainActivity extends AppCompatActivity implements APICallFinishedLi
             JSONArray jsonAlbums = new JSONArray(result);
 
             for(int i = 0; i < jsonAlbums.length(); i++){
-                Album album = new Album();
                 JSONObject objAlbum = jsonAlbums.getJSONObject(i);
-                album.setId(objAlbum.getInt("id"));
-                album.setTitle(objAlbum.getString("title"));
+                Album album = ModelFactory.getInstance().generateAlbum(objAlbum);
                 albums.add(album);
             }
         } catch (JSONException e){
@@ -105,21 +103,13 @@ public class MainActivity extends AppCompatActivity implements APICallFinishedLi
     public void generatePhotos(String result, ArrayList<Photo> photos) {
         try {
             JSONArray jsonPhotos = new JSONArray(result);
-
             for(int i = 0; i < jsonPhotos.length(); i++){
-                Photo photo = new Photo();
                 JSONObject objPhoto = jsonPhotos.getJSONObject(i);
-                photo.setId(objPhoto.getInt("id"));
-                photo.setTitle(objPhoto.getString("title"));
-                photo.setAlbumId(objPhoto.getInt("albumId"));
-                photo.setUrl(objPhoto.getString("url"));
-                photo.setThumnailUrl(objPhoto.getString("thumbnailUrl"));
+                Photo photo = ModelFactory.getInstance().generatePhoto(objPhoto);
                 photos.add(photo);
             }
-
             mappingPhotos(this.albums, this.photos);
             this.AlbumView.setAdapter(albumAdapter);
-
 
         } catch (JSONException e){
             Log.e("Json Exception", e.toString());

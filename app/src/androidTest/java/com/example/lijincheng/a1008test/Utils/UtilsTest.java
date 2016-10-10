@@ -17,7 +17,6 @@ public class UtilsTest {
     Context contx;
     @Before
     public void setUp() throws Exception {
-//        contx = InstrumentationRegistry.getContext();
         contx = InstrumentationRegistry.getTargetContext();
     }
 

@@ -23,11 +23,15 @@ public class ApiCallAsyncTask extends AsyncTask<String, Void, String> {
 
     @Override
     protected String doInBackground(String... urls) {
-        String url = urls[0];
+        String url = "";
+        String result = "";
 
-        RestTemplate restTemplate = new RestTemplate();
-        restTemplate.getMessageConverters().add(new StringHttpMessageConverter());
-        String result = restTemplate.getForObject(url, String.class);
+        if(urls.length > 0){
+            url = urls[0];
+            RestTemplate restTemplate = new RestTemplate();
+            restTemplate.getMessageConverters().add(new StringHttpMessageConverter());
+            result = restTemplate.getForObject(url, String.class);
+        }
         return result;
     }
 
